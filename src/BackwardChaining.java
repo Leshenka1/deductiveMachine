@@ -36,27 +36,20 @@ public class BackwardChaining {
             Rule rule = findRule(currentGoal.getName());
             if (rule != null) {
                 Boolean haveAllConditions = true;
+                Boolean addFakeRule = false;
                 for (Condition condition : rule.getConditions()) {
                     if (!context.containsKey(condition.getName()) || !context.get(condition.getName()).equals(condition.getValue())) {
-                        goalStack.push(new Goal(condition.getName(), null));
-                        haveAllConditions = false;
                         if(context.get(condition.getName()) != null && !context.get(condition.getName()).equals(condition.getValue())){
-                            Rule fakeRule = findRule(condition.getName());
-                            System.out.println("Sorry but your answer: " + condition.getName() + ": \"" + context.get(condition.getName()) +  "\" is incorrect");
-                            if(fakeRule != null) {
-                                fakeRules.add(fakeRule.getId());
-                            }
-                            else{
-                                Scanner scanner = new Scanner(System.in);
-                                System.out.println("Please enter value for " + condition.getName());
-                                String input = scanner.nextLine();
-                                context.put(condition.getName(), input);
-                                goalStack.pop();
-                            }
+                            fakeRules.add(rule.getId());
+                            addFakeRule = true;
+                        }
+                        else {
+                            goalStack.push(new Goal(condition.getName(), null));
+                            haveAllConditions = false;
                         }
                     }
                 }
-                if(haveAllConditions){
+                if(haveAllConditions && !addFakeRule){
                     context.put(currentGoal.getName(), rule.getConclusion().getValue());
                     goalStack.pop();
                 }
@@ -75,6 +68,7 @@ public class BackwardChaining {
         System.out.println("Context: " + context.get(goal.getName()));
     }
 
+
     private Rule findRule(String goalName) {
         for (Rule rule : rules) {
             if (rule.getConclusion().getName().equals(goalName) && !fakeRules.contains(rule.getId())) {
@@ -84,4 +78,13 @@ public class BackwardChaining {
         System.out.println("Sorry, we can't find rule with goal " + goalName);
         return null;
     }
+//    private Rule findFakeRule(Integer id) {
+//        for (Rule rule : rules) {
+//            if (rule.getConclusion().getName().equals(goalName) && !fakeRules.contains(rule.getId())) {
+//                return rule;
+//            }
+//        }
+//        System.out.println("Sorry, we can't find rule with goal " + goalName);
+//        return null;
+//    }
 }

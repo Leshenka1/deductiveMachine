@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,6 +32,8 @@ public class Main {
         Condition conclusion6 = new Condition("engine", "petrol");
 
         Condition condition7_1 = new Condition("spark-plug", "yes");
+        Condition condition7_2 = new Condition("cylinder position", "w");
+        Condition condition7_3 = new Condition("horse power", "high");
         Condition conclusion7 = new Condition("cylinder amount", "10");
 
         Condition condition8_1 = new Condition("spark-plug", "yes");
@@ -47,8 +46,8 @@ public class Main {
 
         Condition condition10_1 = new Condition("spark-plug", "yes");
         Condition condition10_2 = new Condition("cylinder position", "v");
-        Condition condition10_3 = new Condition("horse power", "high");
-        Condition conclusion10 = new Condition("cylinder amount", "12");
+        Condition condition10_3 = new Condition("horse power", "low");
+        Condition conclusion10 = new Condition("cylinder amount", "8");
 
         Condition condition11_1 = new Condition("drive ability", "low");
         Condition condition11_2 = new Condition("crankshaft", "no");
@@ -67,7 +66,7 @@ public class Main {
         Rule rule4 = new Rule(4, Arrays.asList(condition4_1, condition4_2, condition4_3, condition4_4), conclusion4);
         Rule rule5 = new Rule(5, Arrays.asList(condition5_1, condition5_2), conclusion5);
         Rule rule6 = new Rule(6, Arrays.asList(condition6_1, condition6_2), conclusion6);
-        Rule rule7 = new Rule(7, Arrays.asList(condition7_1), conclusion7);
+        Rule rule7 = new Rule(7, Arrays.asList(condition7_1, condition7_2, condition7_3), conclusion7);
         Rule rule8 = new Rule(8, Arrays.asList(condition8_1, condition8_2), conclusion8);
         Rule rule9 = new Rule(9, Arrays.asList(condition9_1, condition9_2), conclusion9);
         Rule rule10 = new Rule(10, Arrays.asList(condition10_1, condition10_2, condition10_3), conclusion10);
@@ -77,11 +76,14 @@ public class Main {
 
 
         // Define the initial goals
-        Goal initialGoal = new Goal("engine", null);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter name for rule u want to find");
+        String goal = scanner.nextLine();
+        Goal initialGoal = new Goal(goal, null);
 
         // Initialize the backward chaining algorithm
         BackwardChaining backwardChaining = new BackwardChaining(Arrays.asList(rule1, rule2, rule3, rule4,
-                rule5, rule6), initialGoal);
+                rule5, rule6, rule7, rule8, rule9, rule10), initialGoal);
 
         // Run the algorithm
         backwardChaining.run();

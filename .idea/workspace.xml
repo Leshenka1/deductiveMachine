@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="010a3d7f-9af3-49c0-ad5d-d2a3c9d52039" name="Changes" comment="">
+    <list default="true" id="010a3d7f-9af3-49c0-ad5d-d2a3c9d52039" name="Changes" comment="edit algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BackwardChaining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackwardChaining.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
@@ -72,10 +72,33 @@
       <updated>1700670718183</updated>
       <workItem from="1700670719524" duration="21220000" />
     </task>
+    <task id="LOCAL-00001" summary="edit algorithm">
+      <created>1700746930843</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700746930843</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="edit algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit algorithm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -87,7 +110,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/BackwardChaining.java</url>
-          <line>77</line>
+          <line>71</line>
           <properties class="BackwardChaining" method="findRule">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -96,5 +119,12 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="goalStack" language="JAVA" />
+        <watch expression="goalStack" language="JAVA" />
+        <watch expression="goalStack" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
