@@ -77,11 +77,11 @@ public class Main {
 
 
         // Define the initial goals
-        Goal initialGoal = new Goal("type", null);
+        Goal initialGoal = new Goal("engine", null);
 
         // Initialize the backward chaining algorithm
         BackwardChaining backwardChaining = new BackwardChaining(Arrays.asList(rule1, rule2, rule3, rule4,
-                rule5, rule6, rule7, rule8, rule9, rule10), initialGoal);
+                rule5, rule6), initialGoal);
 
         // Run the algorithm
         backwardChaining.run();

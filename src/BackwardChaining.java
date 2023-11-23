@@ -42,12 +42,13 @@ public class BackwardChaining {
                         haveAllConditions = false;
                         if(context.get(condition.getName()) != null && !context.get(condition.getName()).equals(condition.getValue())){
                             Rule fakeRule = findRule(condition.getName());
+                            System.out.println("Sorry but your answer: " + condition.getName() + ": \"" + context.get(condition.getName()) +  "\" is incorrect");
                             if(fakeRule != null) {
                                 fakeRules.add(fakeRule.getId());
                             }
                             else{
                                 Scanner scanner = new Scanner(System.in);
-                                System.out.println("Can't find a rule for " + condition.getName() + ". Please enter its value:");
+                                System.out.println("Please enter value for " + condition.getName());
                                 String input = scanner.nextLine();
                                 context.put(condition.getName(), input);
                                 goalStack.pop();
@@ -63,7 +64,7 @@ public class BackwardChaining {
                 // If we reach here, it means we don't have a rule for the current goal
                 // Ask the user for the value
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Can't find a rule for " + currentGoal.getName() + ". Please enter its value:");
+                System.out.println("Please enter value for " + currentGoal.getName());
                 String input = scanner.nextLine();
                 context.put(currentGoal.getName(), input);
                 goalStack.pop();
